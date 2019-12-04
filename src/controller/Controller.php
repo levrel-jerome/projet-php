@@ -2,29 +2,32 @@
 
 namespace App\src\controller;
 
-use App\config\Request;
-use App\src\DAO\ArticleDAO;
-use App\src\DAO\CommentDAO;
-use App\src\model\View;
+use App\config\Parameter;
 
-abstract class Controller
+class BackController extends Controller
 {
-    protected $articleDAO;
-    protected $commentDAO;
-    protected $view;
-    private $request;
-    protected $get;
-    protected $post;
-    protected $session;
-
-    public function __construct()
+    public function addArticle(Parameter $post)
     {
-        $this->articleDAO = new ArticleDAO();
-        $this->commentDAO = new CommentDAO();
-        $this->view = new View();
-        $this->request = new Request();
-        $this->get = $this->request->getGet();
-        $this->post = $this->request->getPost();
-        $this->session = $this->request->getSession();
+        if($post->get('submit')) {
+            $this->articleDAO->addArticle($post);
+            $this->session->set('add_article', 'Le nouvel article a bien été ajouté');
+            header('Location: ../public/index.php');
+        }
+        return $this->view->render('add_article', [
+            'post' => $post
+        ]);
+    }
+
+    public function editArticle(Parameter $post, $articleId)
+    {
+        $article = $this->articleDAO->getArticle($articleId);
+        if($post->get('submit')) {
+            $this->articleDAO->editArticle($post, $articleId);
+            $this->session->set('edit_article', 'L\' article a bien été modifié');
+            header('Location: ../public/index.php');
+        }
+        return $this->view->render('edit_article', [
+            'article' => $article
+        ]);
     }
 }
