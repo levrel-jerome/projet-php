@@ -80,6 +80,7 @@ class FrontController extends Controller
                 $this->session->set('login', 'Content de vous revoir');
                 $this->session->set('id', $result['result']['id']);
                 $this->session->set('pseudo', $post->get('pseudo'));
+                $this->session->set('role', $result['result']['name']);
                 header('Location: ../public/index.php');
             }
             else {
