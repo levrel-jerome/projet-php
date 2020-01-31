@@ -15,8 +15,10 @@
     <form method="post" action="../public/index.php?route=updatePassword">
         <label class="text-white" for="password">Mot de passe</label><br>
         <input type="password" id="password" name="password"><br>
-        <input style="margin-top: 10px" type="submit" value="Mettre à jour" id="submit" name="submit">
+        <label class="text-white" for="password">Confirmer le mot de passe</label><br>
+        <input type="password" id="password" name="password"><br>
+        <input class="btn btn-outline-primary" type="submit" value="Mettre à jour" id="submit" name="submit" style="margin-top: 10px;">
     </form>
     <br>
-    <a href="../public/index.php">Retour à l'accueil</a>
+    <a href="../public/index.php?route=profile">Retour au profil</a>
 </div>

@@ -42,8 +42,10 @@
           </li>
           <?php } ?>
           <li class="nav-item">
+          <?php if($this->session->get('role') === 'admin') { ?>
             <a class="nav-link js-scroll-trigger" href="../public/index.php?route=addArticle">Nouvel article</a>
           </li>
+          <?php } ?>
           
           <?php
           } else {

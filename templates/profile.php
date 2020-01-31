@@ -12,15 +12,17 @@
 <?= $this->session->show('update_password'); ?>
 <div id="container" class="container bg-dark text-center">
     <h2 class="text-white"><?= $this->session->get('pseudo'); ?></h2>
-    <p class="text-white"><?= $this->session->get('id'); ?></p>
+    <br>
     <div>
     <a href="../public/index.php?route=updatePassword">Modifier son mot de passe</a>
     </div>
     </br>
+    <?php if($this->session->get('role') != 'admin') { ?>
     <div>
     <a href="../public/index.php?route=deleteAccount">Supprimer mon compte</a>
     </div>
     <br>
+    <?php } ?>
     <div>
     <a href="../public/index.php">Retour à l'accueil</a>
     </div>
