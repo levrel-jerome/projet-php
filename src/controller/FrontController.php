@@ -6,6 +6,7 @@ use App\config\Parameter;
 
 class FrontController extends Controller
 {
+
     public function home()
     {
         $articles = $this->articleDAO->getArticles();
@@ -22,6 +23,24 @@ class FrontController extends Controller
             'article' => $article,
             'comments' => $comments
         ]);
+    }
+
+    public function biographie()
+    {
+        return $this->view->render('biography', []);
+    }
+
+    public function chapitre()
+    {
+        $articles = $this->articleDAO->getArticles();
+        return $this->view->render('chapitre', [
+           'articles' => $articles
+        ]);
+    }
+
+    public function contact()
+    {
+        return $this->view->render('contact', []);
     }
 
     public function addComment(Parameter $post, $articleId)

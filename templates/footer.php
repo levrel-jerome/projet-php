@@ -35,8 +35,8 @@
               <hr class="my-4">
                 <div class="small text-black-50">
                     <ul style="padding-left: 0px">
-                      <li style="list-style:none">Mere Russie</li>
-                      <li style="list-style:none">La Mongolie à vélo</li>
+                      <li style="list-style:none">Le burn-out de l'épouvantail</li>
+                      <li style="list-style:none">Double meurtre à Doubleville</li>
                       <li style="list-style:none">Secret de l'Egypte</li>
                     </ul>
                 </div>

@@ -1,20 +1,29 @@
 <?php $this->title = 'Administration'; ?>
 
-<h1>Mon blog</h1>
-<p>En construction</p>
+<section class="masthead_biography">
+    <div class="container d-flex h-100 align-items-center">
+      <div class="mx-auto text-center">
+        <h1 class="mx-auto my-0 text-uppercase">ESPACE ADMINISTRATION</h1>
+        <h2 class="text-white-50 mx-auto mt-2 mb-5">Modification possible ci-dessous</h2>
+        <a href="../templates/chapitre.php" class="btn btn-primary js-scroll-trigger">CHAPITRES</a>
+      </div>
+    </div>
+</section>
+
 <?= $this->session->show('add_article'); ?>
 <?= $this->session->show('edit_article'); ?>
 <?= $this->session->show('delete_article'); ?>
 <?= $this->session->show('unflag_comment'); ?>
 <?= $this->session->show('delete_comment'); ?>
 <?= $this->session->show('delete_user'); ?>
-<h2>Articles</h2>
+
+<div class="container bg-dark">
+<h2 class="text-white">Articles</h2>
 <a href="../public/index.php?route=addArticle">Nouvel article</a>
-<table>
-    <tr>
+<table style="width: 100%">
+    <tr style="color: red">
         <td>Id</td>
         <td>Titre</td>
-        <td>Contenu</td>
         <td>Auteur</td>
         <td>Date</td>
         <td>Actions</td>
@@ -24,11 +33,10 @@
     {
         ?>
         <tr>
-            <td><?= htmlspecialchars($article->getId());?></td>
+            <td class="text-white"><?= htmlspecialchars($article->getId());?></td>
             <td><a href="../public/index.php?route=article&articleId=<?= htmlspecialchars($article->getId());?>"><?= htmlspecialchars($article->getTitle());?></a></td>
-            <td><?= substr(htmlspecialchars($article->getContent()), 0, 150);?></td>
-            <td><?= htmlspecialchars($article->getAuthor());?></td>
-            <td>Créé le : <?= htmlspecialchars($article->getCreatedAt());?></td>
+            <td class="text-white"><?= htmlspecialchars($article->getAuthor());?></td>
+            <td class="text-white">Créé le : <?= htmlspecialchars($article->getCreatedAt());?></td>
             <td>
                 <a href="../public/index.php?route=editArticle&articleId=<?= $article->getId(); ?>">Modifier</a>
                 <a href="../public/index.php?route=deleteArticle&articleId=<?= $article->getId(); ?>">Supprimer</a>
@@ -39,9 +47,9 @@
     ?>
 </table>
 
-<h2>Commentaires signalés</h2>
-<table>
-    <tr>
+<h2 class="text-white">Commentaires signalés</h2>
+<table style="width: 100%">
+    <tr style="color: red">
         <td>Id</td>
         <td>Pseudo</td>
         <td>Message</td>
@@ -53,10 +61,10 @@
     {
         ?>
         <tr>
-            <td><?= htmlspecialchars($comment->getId());?></td>
-            <td><?= htmlspecialchars($comment->getPseudo());?></td>
-            <td><?= substr(htmlspecialchars($comment->getContent()), 0, 150);?></td>
-            <td>Créé le : <?= htmlspecialchars($comment->getCreatedAt());?></td>
+            <td class="text-white"><?= htmlspecialchars($comment->getId());?></td>
+            <td class="text-white"><?= htmlspecialchars($comment->getPseudo());?></td>
+            <td class="text-white"><?= substr(htmlspecialchars($comment->getContent()), 0, 150);?></td>
+            <td class="text-white">Créé le : <?= htmlspecialchars($comment->getCreatedAt());?></td>
             <td>
                 <a href="../public/index.php?route=unflagComment&commentId=<?= $comment->getId(); ?>">Désignaler le commentaire</a>
                 <a href="../public/index.php?route=deleteComment&commentId=<?= $comment->getId(); ?>">Supprimer le commentaire</a>
@@ -67,9 +75,9 @@
     ?>
 </table>
 
-<h2>Utilisateurs</h2>
-<table>
-    <tr>
+<h2 class="text-white">Utilisateurs</h2>
+<table style="width: 100%">
+    <tr style="color: red">
         <td>Id</td>
         <td>Pseudo</td>
         <td>Date</td>
@@ -81,11 +89,11 @@
     {
         ?>
         <tr>
-            <td><?= htmlspecialchars($user->getId());?></td>
-            <td><?= htmlspecialchars($user->getPseudo());?></td>
-            <td>Créé le : <?= htmlspecialchars($user->getCreatedAt());?></td>
-            <td><?= htmlspecialchars($user->getRole());?></td>
-            <td>
+            <td class="text-white"><?= htmlspecialchars($user->getId());?></td>
+            <td class="text-white"><?= htmlspecialchars($user->getPseudo());?></td>
+            <td class="text-white">Créé le : <?= htmlspecialchars($user->getCreatedAt());?></td>
+            <td class="text-white"><?= htmlspecialchars($user->getRole());?></td>
+            <td class="text-white">
                 <?php
                 if($user->getRole() != 'admin') {
                 ?>
@@ -103,3 +111,4 @@
     }
     ?>
 </table>
+</div>

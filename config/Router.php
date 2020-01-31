@@ -30,6 +30,15 @@ class Router
                 if($route === 'article'){
                     $this->frontController->article($this->request->getGet()->get('articleId'));
                 }
+                elseif($route === 'contact'){
+                    $this->frontController->contact();
+                }
+                elseif($route === 'biographie'){
+                    $this->frontController->biographie();
+                }
+                elseif($route === 'chapitre'){
+                    $this->frontController->chapitre();
+                }
                 elseif($route === 'addArticle'){
                     $this->backController->addArticle($this->request->getPost());
                 }
