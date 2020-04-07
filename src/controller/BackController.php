@@ -127,11 +127,31 @@ class BackController extends Controller
     {
         if($this->checkLoggedIn()) {
             if ($post->get('submit')) {
-                $this->userDAO->updatePassword($post, $this->session->get('pseudo'));
-                $this->session->set('update_password', 'Le mot de passe a été mis à jour');
-                header('Location: ../public/index.php?route=profile');
+                if (!empty($post->get('password'))) {
+                    if ($post->get('password') == $post->get('checkPassword')) {
+                        $this->session->set('update_password', 'Le mot de passe a été mis à jour');
+                        header('Location: ../public/index.php?route=profile');
+                        exit();
+                    } else {
+                        $this->session->set('password', 'Les mots de passe ne correspondent pas ou sont vides');
+                    }
+                } else {
+                    $this->session->set('password', 'Les mots de passe ne doivent pas être vides');
+                }
             }
             return $this->view->render('update_password');
+        }
+    }
+
+    public function contactCheck()
+    {
+        if ($post->get('submit')) {
+            if (empty($post->get('checkbox'))) {
+                $this->session->set('checkbox', 'le formulaire à bien été envoyé');
+            } else {
+                $this->session->set('checkbox', 'vous etes un robot');
+            }
+            return $this->view->render('contact');
         }
     }
 

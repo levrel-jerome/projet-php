@@ -24,27 +24,23 @@
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="index.php?route=chapitre">Chapitres</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="index.php?route=contact">Contact</a>
-          </li>
           <?php
           if ($this->session->get('pseudo')) {
           ?>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="../public/index.php?route=logout">Déconnexion</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="../public/index.php?route=profile">Profil</a>
-          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Administration
+            </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="../public/index.php?route=logout">Déconnexion</a>
+            <a class="dropdown-item" href="../public/index.php?route=profile">Profil</a>
           <?php if($this->session->get('role') === 'admin') { ?>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="../public/index.php?route=administration">Administration</a>
-          </li>
+            <a class="dropdown-item" href="../public/index.php?route=administration">Administration</a>
           <?php } ?>
-          <li class="nav-item">
           <?php if($this->session->get('role') === 'admin') { ?>
-            <a class="nav-link js-scroll-trigger" href="../public/index.php?route=addArticle">Nouvel article</a>
-          </li>
+            <a class="dropdown-item" href="../public/index.php?route=addArticle">Nouvel article</a>
+        </div>
+        </li>
           <?php } ?>
           
           <?php

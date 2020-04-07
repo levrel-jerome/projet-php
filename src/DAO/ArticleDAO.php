@@ -31,6 +31,37 @@ class ArticleDAO extends DAO
         return $articles;
     }
 
+    public function getLastArticles()
+    {
+        $sql = 'SELECT article.id, article.title, article.content, user.pseudo, article.createdAt FROM article INNER JOIN user ON article.user_id = user.id ORDER BY article.id DESC LIMIT 2';
+        $result = $this->createQuery($sql);
+        $articles = [];
+        foreach ($result as $row){
+            $articleId = $row['id'];
+            $articles[$articleId] = $this->buildObject($row);
+        }
+        $result->closeCursor();
+        return $articles;
+    }
+
+    public function nextArticle($articleId)
+    {
+        $sql = 'SELECT article.id, article.title, article.content, user.pseudo, article.createdAt FROM article INNER JOIN user ON article.user_id = user.id WHERE article.id > ? ORDER BY article.id LIMIT 1';
+        $result = $this->createQuery($sql, [$articleId]);
+        $article = $result->fetch();
+        $result->closeCursor();
+        return $this->buildObject($article);
+    }
+
+    public function prevArticle($articleId)
+    {
+        $sql = 'SELECT article.id, article.title, article.content, user.pseudo, article.createdAt FROM article INNER JOIN user ON article.user_id = user.id WHERE article.id < ? ORDER BY article.id DESC LIMIT 1';
+        $result = $this->createQuery($sql, [$articleId]);
+        $article = $result->fetch();
+        $result->closeCursor();
+        return $this->buildObject($article);
+    }
+
     public function getArticle($articleId)
     {
         $sql = 'SELECT article.id, article.title, article.content, user.pseudo, article.createdAt FROM article INNER JOIN user ON article.user_id = user.id WHERE article.id = ?';

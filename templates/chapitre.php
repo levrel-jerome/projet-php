@@ -16,7 +16,7 @@ foreach ($articles as $article)
     ?>
     <div id="container" class="container bg-dark text-center">
         <h2><a href="../public/index.php?route=article&articleId=<?= htmlspecialchars($article->getId());?>"><?= htmlspecialchars($article->getTitle());?></a></h2>
-        <p class="text-white"><?= substr(htmlspecialchars($article->getContent()), 0, 600);?>...<br><br><a href="../public/index.php?route=article&articleId=<?= htmlspecialchars($article->getId());?>">Lire la suite</a></p>
+        <div class="text-white"><?= substr($article->getContent(), 0, 600);?>...<br><br><a href="../public/index.php?route=article&articleId=<?= htmlspecialchars($article->getId());?>">Lire la suite</a></div>
         <p class="text-white"><?= htmlspecialchars($article->getAuthor());?></p>
         <p class="text-white">Créé le : <?= htmlspecialchars(strftime('%d-%m-%Y',strtotime($article->getCreatedAt())));?></p>
     </div>

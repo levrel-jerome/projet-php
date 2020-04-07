@@ -9,18 +9,24 @@ class FrontController extends Controller
 
     public function home()
     {
-        $articles = $this->articleDAO->getArticles();
+        $articles = $this->articleDAO->getLastArticles();
+
         return $this->view->render('home', [
            'articles' => $articles
         ]);
     }
 
+
     public function article($articleId)
     {
         $article = $this->articleDAO->getArticle($articleId);
+        $articlePrev = $this->articleDAO->prevArticle($articleId);
+        $articleNext = $this->articleDAO->nextArticle($articleId);
         $comments = $this->commentDAO->getCommentsFromArticle($articleId);
         return $this->view->render('single', [
             'article' => $article,
+            'articlePrev' => $articlePrev,
+            'articleNext' => $articleNext,
             'comments' => $comments
         ]);
     }
@@ -40,6 +46,7 @@ class FrontController extends Controller
 
     public function contact()
     {
+        
         return $this->view->render('contact', []);
     }
 
@@ -48,9 +55,10 @@ class FrontController extends Controller
         if($post->get('submit')) {
             $errors = $this->validation->validate($post, 'Comment');
             if(!$errors) {
-                $this->commentDAO->addComment($post, $articleId);
+                $pseudo = $this->session->get('pseudo');
+                $this->commentDAO->addComment($post, $articleId, $pseudo);
                 $this->session->set('add_comment', 'Le nouveau commentaire a bien été ajouté');
-                header('Location: ../public/index.php');
+                header('Location: ../public/index.php?route=article&articleId=' . $articleId);
             }
             $article = $this->articleDAO->getArticle($articleId);
             $comments = $this->commentDAO->getCommentsFromArticle($articleId);

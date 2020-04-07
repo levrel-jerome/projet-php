@@ -11,23 +11,32 @@
 
 <div>
     <div id="container" class="container bg-dark text-center">
-    <p class="text-white"><?= htmlspecialchars($article->getContent());?></p>
-    <br>
-    <br>
-    <?php if($this->session->get('role') === 'admin') { ?>
-    <div class="actions text-center">
-    <a href="../public/index.php?route=editArticle&articleId=<?= $article->getId(); ?>">Modifier</a>
+        <div class="text-white"><?= $article->getContent();?></div>
+        <br>
+        <br>
+        <?php if($this->session->get('role') === 'admin') { ?>
+            <div class="actions text-center">
+                <a href="../public/index.php?route=editArticle&articleId=<?= $article->getId(); ?>">Modifier</a>
+            </div>
+            <br>
+            <div class="actions text-center">
+                <a href="../public/index.php?route=deleteArticle&articleId=<?= $article->getId(); ?>">Supprimer</a>
+            </div>
+            <br>
+        <?php } ?>
+        <div class="row">
+            <div class="col-md-6 text-left">
+                <?php if (!empty($articlePrev->getId())) { ?>
+                    <a href="../public/index.php?route=article&articleId=<?= htmlspecialchars($articlePrev->getId()); ?>">Article précédent</a>
+                <?php } ?>
+            </div>
+            <div class="col-md-6 text-right">
+                <?php if (!empty($articleNext->getId())) { ?>
+                    <a href="../public/index.php?route=article&articleId=<?= htmlspecialchars($articleNext->getId()); ?>">Article Suivant</a>
+                <?php } ?>
+            </div>
+        </div>
     </div>
-    <br>
-    <div class="actions text-center">
-    <a href="../public/index.php?route=deleteArticle&articleId=<?= $article->getId(); ?>">Supprimer</a>
-    </div>
-    <br>
-    <?php } ?>
-    <div class="actions text-center">
-    <a href="../public/index.php">Retour à l'accueil</a>
-    </div>
-    
 </div>
 
    
@@ -45,14 +54,14 @@
                 foreach ($comments as $comment)
                 {
                 ?>
-        <h3 class="text-center mt-5 mb-5 text-white">Commentaires</h3>
-        <h4 class="text-center mt-5 mb-5 text-white" ><?= htmlspecialchars($comment->getPseudo());?></h4>
+        <h3 id="comm" class="text-center mt-5 mb-5 text-white">Commentaires</h3>
+        <h4 class="text-center mt-5 mb-5 text-white"><?= htmlspecialchars($comment->getPseudo());?></h4>
         <p class="text-center mt-5 mb-5 text-white"><?= htmlspecialchars($comment->getContent());?></p>
-        <p class="text-center mt-5 mb-5 text-white">Posté le <?= htmlspecialchars(strftime('%d-%m-%Y',strtotime($article->getCreatedAt())));?></p>
+        <p class="text-center mt-5 mb-5 text-white">Posté le <?= htmlspecialchars(strftime('%d-%m-%Y',strtotime($comment->getCreatedAt())));?></p>
         <?php
         if($comment->isFlag()) {
             ?>
-            <p class="text-center mt-5 mb-5" style="color: red;">Ce commentaire à déjà été signalé</p>
+            <p id="signale" class="text-center mt-5 mb-5">Ce commentaire à déjà été signalé</p>
             <?php
         } else {
             ?>

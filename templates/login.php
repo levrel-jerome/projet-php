@@ -25,8 +25,8 @@
                 <label for="password" class="text-white">Mot de passe</label><br>
                 <input type="password" id="password" name="password"><br>
                 </div>
-                <div class="col-lg-12 text-center" style="padding-top: 15px; padding-bottom: 10px">
-                <input type="submit" value="Connexion" id="submit" name="submit">
+                <div id="input_login" class="col-lg-12 text-center">
+                <input type="submit" class="btn btn-primary mt-4 px-4" value="Connexion" id="submit" name="submit">
                 </div>
                 </form>
                 <a href="../public/index.php">Retour à l'accueil</a>

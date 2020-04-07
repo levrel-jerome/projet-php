@@ -25,8 +25,8 @@
                     <input type="password" id="password" name="password"><br>
                     <?= isset($errors['password']) ? $errors['password'] : ''; ?>
                   </div>
-                  <div class="col-lg-12 text-center" style="padding-top: 15px; padding-bottom: 10px">
-                    <input type="submit" value="Inscription" id="submit" name="submit">
+                  <div id="input_register" class="col-lg-12 text-center">
+                    <input type="submit" class="btn btn-primary mt-4 px-4" value="Inscription" id="submit" name="submit">
                   </div>
         </form>
                 <a href="../public/index.php">Retour à l'accueil</a>

@@ -14,6 +14,7 @@
 
     <link href="../public/css/grayscale.min.css" rel="stylesheet">
     <link href="../public/css/main.css" rel="stylesheet">
+    <script src="https://cdn.tiny.cloud/1/pa83c47hv3v6sifuvzvrynt4n89522dr2u05m9p685k3gbje/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 </head>
 <body>
 <?php require "header.php" ?>
@@ -30,5 +31,17 @@
     <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <script src="../public/js/grayscale.js"></script>
+
+    <script>
+            tinymce.init({
+            selector: 'textarea',
+            plugins: 'a11ychecker advcode casechange formatpainter linkchecker autolink lists checklist media mediaembed pageembed permanentpen powerpaste table advtable tinycomments tinymcespellchecker',
+            toolbar: 'a11ycheck addcomment showcomments casechange checklist code formatpainter pageembed permanentpen table',
+            toolbar_mode: 'floating',
+            tinycomments_mode: 'embedded',
+            tinycomments_author: 'Author name',
+            });
+    </script>
+    
 </body>
 </html>

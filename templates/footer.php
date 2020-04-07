@@ -34,10 +34,10 @@
               <h4 class="text-uppercase m-0">Livre</h4>
               <hr class="my-4">
                 <div class="small text-black-50">
-                    <ul style="padding-left: 0px">
-                      <li style="list-style:none">Le burn-out de l'épouvantail</li>
-                      <li style="list-style:none">Double meurtre à Doubleville</li>
-                      <li style="list-style:none">Secret de l'Egypte</li>
+                    <ul id="ul_footer">
+                      <li>Le burn-out de l'épouvantail</li>
+                      <li>Double meurtre à Doubleville</li>
+                      <li>Secret de l'Egypte</li>
                     </ul>
                 </div>
             </div>

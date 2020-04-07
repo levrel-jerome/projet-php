@@ -68,3 +68,54 @@
   margin: 30px auto;
   padding: 30px;
 }
+
+#contact-form .container bg-dark h3 {
+  padding-top: 20px;
+}
+
+#table_admin {
+  width: 100%;
+}
+
+#table_admin tr td {
+  color: red;
+}
+
+#ul_footer {
+  padding-left: 0px;
+}
+
+#ul_footer li{
+  list-style:none;
+}
+
+#signale {
+  color: red;
+}
+
+#comm {
+  padding-top: 20px;
+}
+
+#button_comment {
+  padding-top: 15px;
+  padding-bottom: 10px;
+}
+
+#text_biography {
+  margin-bottom: 0px;
+}
+
+#input_form_article {
+  padding-bottom: 10px;
+}
+
+#input_login {
+  padding-top: 10px;
+  padding-bottom: 15px;
+}
+
+#input_register {
+  padding-top: 10px;
+  padding-bottom: 15px;
+}
