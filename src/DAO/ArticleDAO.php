@@ -68,6 +68,9 @@ class ArticleDAO extends DAO
         $result = $this->createQuery($sql, [$articleId]);
         $article = $result->fetch();
         $result->closeCursor();
+        if (empty($article)) {
+            return null;
+        }
         return $this->buildObject($article);
     }
 

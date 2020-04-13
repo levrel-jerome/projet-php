@@ -20,6 +20,12 @@ class FrontController extends Controller
     public function article($articleId)
     {
         $article = $this->articleDAO->getArticle($articleId);
+        
+        if ($article === null) {
+            header("Location: index.php?route=error");
+            exit();
+        }
+
         $articlePrev = $this->articleDAO->prevArticle($articleId);
         $articleNext = $this->articleDAO->nextArticle($articleId);
         $comments = $this->commentDAO->getCommentsFromArticle($articleId);
@@ -39,6 +45,7 @@ class FrontController extends Controller
     public function chapitre()
     {
         $articles = $this->articleDAO->getArticles();
+
         return $this->view->render('chapitre', [
            'articles' => $articles
         ]);
@@ -54,21 +61,29 @@ class FrontController extends Controller
     {
         if($post->get('submit')) {
             $errors = $this->validation->validate($post, 'Comment');
+            
             if(!$errors) {
                 $pseudo = $this->session->get('pseudo');
                 $this->commentDAO->addComment($post, $articleId, $pseudo);
                 $this->session->set('add_comment', 'Le nouveau commentaire a bien été ajouté');
                 header('Location: ../public/index.php?route=article&articleId=' . $articleId);
+                exit();
+            } else {
+                $article = $this->articleDAO->getArticle($articleId);
+                $articlePrev = $this->articleDAO->prevArticle($articleId);
+                $articleNext = $this->articleDAO->nextArticle($articleId);
+                $comments = $this->commentDAO->getCommentsFromArticle($articleId);
+                return $this->view->render('single', [
+                    'article' => $article,
+                    'articlePrev' => $articlePrev,
+                    'articleNext' => $articleNext,
+                    'comments' => $comments,
+                    'errors' => $errors
+                ]);
             }
-            $article = $this->articleDAO->getArticle($articleId);
-            $comments = $this->commentDAO->getCommentsFromArticle($articleId);
-            return $this->view->render('single', [
-                'article' => $article,
-                'comments' => $comments,
-                'post' => $post,
-                'errors' => $errors
-            ]);
         }
+        header("Location: index.php?route=error");
+        exit();
     }
 
     public function flagComment($commentId)

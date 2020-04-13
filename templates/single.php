@@ -39,15 +39,19 @@
     </div>
 </div>
 
-   
+<?php if (!empty($this->session->get('id'))) : ?>
 <section id="contact-form">
     <div class="container bg-dark">
         <div class="row">
             <div class="px-sm-5 px-lg-0 col-lg-10 offset-lg-1 mb-5 mt-5">
                 <h3 class="text-center mt-5 mb-5 text-white">Ajouter un commentaire</h3>
                 <?php include('form_comment.php'); ?>
+            </div>
+        </div>
     </div>
 </section>
+<?php endif; ?>
+
 <section id="contact-form">
     <div class="container bg-dark">
                 <?php

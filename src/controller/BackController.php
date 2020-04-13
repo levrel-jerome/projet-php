@@ -143,18 +143,6 @@ class BackController extends Controller
         }
     }
 
-    public function contactCheck()
-    {
-        if ($post->get('submit')) {
-            if (empty($post->get('checkbox'))) {
-                $this->session->set('checkbox', 'le formulaire à bien été envoyé');
-            } else {
-                $this->session->set('checkbox', 'vous etes un robot');
-            }
-            return $this->view->render('contact');
-        }
-    }
-
     public function logout()
     {
         if($this->checkLoggedIn())

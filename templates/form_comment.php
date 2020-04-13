@@ -11,7 +11,7 @@ $submit = $route === 'addComment' ? 'Ajouter' : 'Mettre à jour';
     <div class="offset-lg-3 col-lg-6">
         <div class="form-group text-center">
             <label for="content" class="text-white">Message</label>
-            <textarea id="content" class="form-control" name="content"><?= isset($post) ? htmlspecialchars($post->get('content')): ''; ?></textarea>
+            <input id="content" class="form-control" name="content"><?= isset($post) ? htmlspecialchars($post->get('content')): ''; ?></input>
             <?= isset($errors['content']) ? $errors['content'] : ''; ?>
         </div>
     </div>

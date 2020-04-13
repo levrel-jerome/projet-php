@@ -84,6 +84,9 @@ class Router
                 elseif($route === 'administration'){
                     $this->backController->administration();
                 }
+                elseif($route === 'error') {
+                    $this->errorController->errorNotFound();
+                }
                 else{
                     $this->errorController->errorNotFound();
                 }
