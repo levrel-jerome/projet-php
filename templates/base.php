@@ -17,14 +17,14 @@
     <script src="https://cdn.tiny.cloud/1/pa83c47hv3v6sifuvzvrynt4n89522dr2u05m9p685k3gbje/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 </head>
 <body>
-<?php require "header.php" ?>
 
-    <div id="content">
-        <?= $content ?>
-    </div>
+            <?php require "header.php" ?>
 
-<?php require "footer.php" ?>
+            <div id="content">
+                <?= $content ?>
+            </div>
 
+            <?php require "footer.php" ?>
     <script src="../vendor/jquery/jquery.min.js"></script>
     <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
